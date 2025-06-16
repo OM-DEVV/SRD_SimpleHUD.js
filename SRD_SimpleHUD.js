@@ -1,24 +1,21 @@
 /*:
- * @plugindesc v4.0.3 A flexible HUD with mouse-over effects and an automatic layout system.
- * @author Your Name (Senior RPG Developer)
+ * @plugindesc v4.2.0 A flexible HUD with mouse-over and click effects.
+ * @author OM-Devv & AI
  * @target MZ
- * @url https://your-plugin-repo.com/
+ * @url 
  *
  * @help SRD_SimpleHUD.js
  *
  * This plugin displays a highly customizable Heads-Up Display (HUD) on the
  * map screen, featuring up to six meters with an automatic layout system.
  *
- * --- NEW in v4.0.3 ---
- * - Fixed a crash related to mouse-over detection when using certain
- *   plugin compatibility layers (e.g., for MV plugins). The mouse
- *   detection logic is now more robust.
+ * --- NEW in v4.2.0 ---
+ * - Clickable Meters: Meters can now trigger a configurable Common Event
+ *   when clicked. See the "Interactivity" section for each meter.
  *
- * --- NEW in v4.0.2 ---
- * - Mouse-Over Glow: Meters can now display a configurable highlight effect
- *   when the mouse cursor hovers over them. See "Mouse & Touch" settings.
- * - Border Opacity: You can now set a global opacity for meter borders,
- *   allowing for more subtle designs. See "Style Settings".
+ * --- NEW in v4.1.1 ---
+ * - Fixed a critical logic flaw in the Text Color Triggers. The system
+ *   now correctly evaluates all triggers to find the most specific match.
  *
  * --- PLUGIN COMMANDS ---
  *  - Show HUD / Hide HUD / Toggle HUD:
@@ -230,6 +227,154 @@
  * @type string
  * @default #ffffff
  *
+ * @param ---Meter 1 Text Color Triggers---
+ * @parent ---Meter 1 Settings---
+ * @desc Optional triggers to change the text color. The most specific trigger will be used.
+ *
+ * @param meter1TextColorTrigger1Enabled
+ * @text Enable Trigger 1
+ * @parent ---Meter 1 Text Color Triggers---
+ * @type boolean
+ * @desc Enable the first color trigger.
+ * @default false
+ *
+ * @param meter1TextColorTrigger1VariableId
+ * @text Trigger 1 Variable
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc The variable to check. If 0, uses this meter's Current Value Variable.
+ * @type variable
+ * @default 0
+ *
+ * @param meter1TextColorTrigger1Type
+ * @text Trigger 1 Comparison
+ * @parent ---Meter 1 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter1TextColorTrigger1ThresholdVarId
+ * @text Trigger 1 Threshold (from Variable)
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc Variable ID for the threshold. If > 0, this overrides the fixed value below.
+ * @type variable
+ * @default 0
+ *
+ * @param meter1TextColorTrigger1ThresholdValue
+ * @text Trigger 1 Threshold (Fixed)
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc The fixed threshold value to compare against.
+ * @type number
+ * @min -99999999
+ * @default 25
+ *
+ * @param meter1TextColorTrigger1Color
+ * @text Trigger 1 Color
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc The text color to use when this trigger is active.
+ * @type string
+ * @default #ff6666
+ *
+ * @param meter1TextColorTrigger2Enabled
+ * @text Enable Trigger 2
+ * @parent ---Meter 1 Text Color Triggers---
+ * @type boolean
+ * @desc Enable the second color trigger.
+ * @default false
+ *
+ * @param meter1TextColorTrigger2VariableId
+ * @text Trigger 2 Variable
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc The variable to check. If 0, uses this meter's Current Value Variable.
+ * @type variable
+ * @default 0
+ *
+ * @param meter1TextColorTrigger2Type
+ * @text Trigger 2 Comparison
+ * @parent ---Meter 1 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter1TextColorTrigger2ThresholdVarId
+ * @text Trigger 2 Threshold (from Variable)
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc Variable ID for the threshold. If > 0, this overrides the fixed value below.
+ * @type variable
+ * @default 0
+ *
+ * @param meter1TextColorTrigger2ThresholdValue
+ * @text Trigger 2 Threshold (Fixed)
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc The fixed threshold value to compare against.
+ * @type number
+ * @min -99999999
+ * @default 50
+ *
+ * @param meter1TextColorTrigger2Color
+ * @text Trigger 2 Color
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc The text color to use when this trigger is active.
+ * @type string
+ * @default #ffcc66
+ *
+ * @param meter1TextColorTrigger3Enabled
+ * @text Enable Trigger 3
+ * @parent ---Meter 1 Text Color Triggers---
+ * @type boolean
+ * @desc Enable the third color trigger.
+ * @default false
+ *
+ * @param meter1TextColorTrigger3VariableId
+ * @text Trigger 3 Variable
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc The variable to check. If 0, uses this meter's Current Value Variable.
+ * @type variable
+ * @default 0
+ *
+ * @param meter1TextColorTrigger3Type
+ * @text Trigger 3 Comparison
+ * @parent ---Meter 1 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter1TextColorTrigger3ThresholdVarId
+ * @text Trigger 3 Threshold (from Variable)
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc Variable ID for the threshold. If > 0, this overrides the fixed value below.
+ * @type variable
+ * @default 0
+ *
+ * @param meter1TextColorTrigger3ThresholdValue
+ * @text Trigger 3 Threshold (Fixed)
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc The fixed threshold value to compare against.
+ * @type number
+ * @min -99999999
+ * @default 75
+ *
+ * @param meter1TextColorTrigger3Color
+ * @text Trigger 3 Color
+ * @parent ---Meter 1 Text Color Triggers---
+ * @desc The text color to use when this trigger is active.
+ * @type string
+ * @default #ffff66
+ *
  * @param meter1TextOpacity
  * @text Text Opacity
  * @parent ---Meter 1 Settings---
@@ -253,6 +398,16 @@
  * @desc Set to 0 for default game font size.
  * @default 0
  *
+ * @param ---Meter 1 Interactivity---
+ * @parent ---Meter 1 Settings---
+ *
+ * @param meter1ClickCommonEventId
+ * @text On-Click Common Event
+ * @parent ---Meter 1 Interactivity---
+ * @desc The Common Event to run when this meter is clicked. Set to 0 for no effect.
+ * @type common_event
+ * @default 0
+ *
  * @param ---Meter 2 Settings---
  * @param meter2Enabled
  * @text Enable This Meter
@@ -263,7 +418,6 @@
  * @param meter2LayoutAnchor
  * @text Layout Anchor
  * @parent ---Meter 2 Settings---
- * @desc Choose a screen corner to automatically position this bar. Overrides X/Y.
  * @type select
  * @option Custom Position
  * @value custom
@@ -417,6 +571,138 @@
  * @type string
  * @default #ffffff
  *
+ * @param ---Meter 2 Text Color Triggers---
+ * @parent ---Meter 2 Settings---
+ *
+ * @param meter2TextColorTrigger1Enabled
+ * @text Enable Trigger 1
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter2TextColorTrigger1VariableId
+ * @text Trigger 1 Variable
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter2TextColorTrigger1Type
+ * @text Trigger 1 Comparison
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter2TextColorTrigger1ThresholdVarId
+ * @text Trigger 1 Threshold (from Variable)
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter2TextColorTrigger1ThresholdValue
+ * @text Trigger 1 Threshold (Fixed)
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 25
+ *
+ * @param meter2TextColorTrigger1Color
+ * @text Trigger 1 Color
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type string
+ * @default #ff6666
+ *
+ * @param meter2TextColorTrigger2Enabled
+ * @text Enable Trigger 2
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter2TextColorTrigger2VariableId
+ * @text Trigger 2 Variable
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter2TextColorTrigger2Type
+ * @text Trigger 2 Comparison
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter2TextColorTrigger2ThresholdVarId
+ * @text Trigger 2 Threshold (from Variable)
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter2TextColorTrigger2ThresholdValue
+ * @text Trigger 2 Threshold (Fixed)
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 50
+ *
+ * @param meter2TextColorTrigger2Color
+ * @text Trigger 2 Color
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type string
+ * @default #ffcc66
+ *
+ * @param meter2TextColorTrigger3Enabled
+ * @text Enable Trigger 3
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter2TextColorTrigger3VariableId
+ * @text Trigger 3 Variable
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter2TextColorTrigger3Type
+ * @text Trigger 3 Comparison
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter2TextColorTrigger3ThresholdVarId
+ * @text Trigger 3 Threshold (from Variable)
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter2TextColorTrigger3ThresholdValue
+ * @text Trigger 3 Threshold (Fixed)
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 75
+ *
+ * @param meter2TextColorTrigger3Color
+ * @text Trigger 3 Color
+ * @parent ---Meter 2 Text Color Triggers---
+ * @type string
+ * @default #ffff66
+ *
  * @param meter2TextOpacity
  * @text Text Opacity
  * @parent ---Meter 2 Settings---
@@ -429,7 +715,6 @@
  * @text Font Face
  * @parent ---Meter 2 Settings---
  * @type string
- * @desc Leave blank for default game font.
  * @default
  *
  * @param meter2TextSize
@@ -437,7 +722,16 @@
  * @parent ---Meter 2 Settings---
  * @type number
  * @min 0
- * @desc Set to 0 for default game font size.
+ * @default 0
+ *
+ * @param ---Meter 2 Interactivity---
+ * @parent ---Meter 2 Settings---
+ *
+ * @param meter2ClickCommonEventId
+ * @text On-Click Common Event
+ * @parent ---Meter 2 Interactivity---
+ * @desc The Common Event to run when this meter is clicked. Set to 0 for no effect.
+ * @type common_event
  * @default 0
  *
  * @param ---Meter 3 Settings---
@@ -450,7 +744,6 @@
  * @param meter3LayoutAnchor
  * @text Layout Anchor
  * @parent ---Meter 3 Settings---
- * @desc Choose a screen corner to automatically position this bar. Overrides X/Y.
  * @type select
  * @option Custom Position
  * @value custom
@@ -532,7 +825,6 @@
  * @text Border Color
  * @parent ---Meter 3 Settings---
  * @type string
- * @desc Overrides global border color. Leave blank for default.
  * @default
  *
  * @param meter3ShowText
@@ -604,6 +896,138 @@
  * @type string
  * @default #ffffff
  *
+ * @param ---Meter 3 Text Color Triggers---
+ * @parent ---Meter 3 Settings---
+ *
+ * @param meter3TextColorTrigger1Enabled
+ * @text Enable Trigger 1
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter3TextColorTrigger1VariableId
+ * @text Trigger 1 Variable
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter3TextColorTrigger1Type
+ * @text Trigger 1 Comparison
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter3TextColorTrigger1ThresholdVarId
+ * @text Trigger 1 Threshold (from Variable)
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter3TextColorTrigger1ThresholdValue
+ * @text Trigger 1 Threshold (Fixed)
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 25
+ *
+ * @param meter3TextColorTrigger1Color
+ * @text Trigger 1 Color
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type string
+ * @default #ff6666
+ *
+ * @param meter3TextColorTrigger2Enabled
+ * @text Enable Trigger 2
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter3TextColorTrigger2VariableId
+ * @text Trigger 2 Variable
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter3TextColorTrigger2Type
+ * @text Trigger 2 Comparison
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter3TextColorTrigger2ThresholdVarId
+ * @text Trigger 2 Threshold (from Variable)
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter3TextColorTrigger2ThresholdValue
+ * @text Trigger 2 Threshold (Fixed)
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 50
+ *
+ * @param meter3TextColorTrigger2Color
+ * @text Trigger 2 Color
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type string
+ * @default #ffcc66
+ *
+ * @param meter3TextColorTrigger3Enabled
+ * @text Enable Trigger 3
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter3TextColorTrigger3VariableId
+ * @text Trigger 3 Variable
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter3TextColorTrigger3Type
+ * @text Trigger 3 Comparison
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter3TextColorTrigger3ThresholdVarId
+ * @text Trigger 3 Threshold (from Variable)
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter3TextColorTrigger3ThresholdValue
+ * @text Trigger 3 Threshold (Fixed)
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 75
+ *
+ * @param meter3TextColorTrigger3Color
+ * @text Trigger 3 Color
+ * @parent ---Meter 3 Text Color Triggers---
+ * @type string
+ * @default #ffff66
+ *
  * @param meter3TextOpacity
  * @text Text Opacity
  * @parent ---Meter 3 Settings---
@@ -616,7 +1040,6 @@
  * @text Font Face
  * @parent ---Meter 3 Settings---
  * @type string
- * @desc Leave blank for default game font.
  * @default
  *
  * @param meter3TextSize
@@ -624,7 +1047,16 @@
  * @parent ---Meter 3 Settings---
  * @type number
  * @min 0
- * @desc Set to 0 for default game font size.
+ * @default 0
+ *
+ * @param ---Meter 3 Interactivity---
+ * @parent ---Meter 3 Settings---
+ *
+ * @param meter3ClickCommonEventId
+ * @text On-Click Common Event
+ * @parent ---Meter 3 Interactivity---
+ * @desc The Common Event to run when this meter is clicked. Set to 0 for no effect.
+ * @type common_event
  * @default 0
  *
  * @param ---Meter 4 Settings---
@@ -637,7 +1069,6 @@
  * @param meter4LayoutAnchor
  * @text Layout Anchor
  * @parent ---Meter 4 Settings---
- * @desc Choose a screen corner to automatically position this bar. Overrides X/Y.
  * @type select
  * @option Custom Position
  * @value custom
@@ -719,7 +1150,6 @@
  * @text Border Color
  * @parent ---Meter 4 Settings---
  * @type string
- * @desc Overrides global border color. Leave blank for default.
  * @default
  *
  * @param meter4ShowText
@@ -791,6 +1221,138 @@
  * @type string
  * @default #ffffff
  *
+ * @param ---Meter 4 Text Color Triggers---
+ * @parent ---Meter 4 Settings---
+ *
+ * @param meter4TextColorTrigger1Enabled
+ * @text Enable Trigger 1
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter4TextColorTrigger1VariableId
+ * @text Trigger 1 Variable
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter4TextColorTrigger1Type
+ * @text Trigger 1 Comparison
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter4TextColorTrigger1ThresholdVarId
+ * @text Trigger 1 Threshold (from Variable)
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter4TextColorTrigger1ThresholdValue
+ * @text Trigger 1 Threshold (Fixed)
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 25
+ *
+ * @param meter4TextColorTrigger1Color
+ * @text Trigger 1 Color
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type string
+ * @default #ff6666
+ *
+ * @param meter4TextColorTrigger2Enabled
+ * @text Enable Trigger 2
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter4TextColorTrigger2VariableId
+ * @text Trigger 2 Variable
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter4TextColorTrigger2Type
+ * @text Trigger 2 Comparison
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter4TextColorTrigger2ThresholdVarId
+ * @text Trigger 2 Threshold (from Variable)
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter4TextColorTrigger2ThresholdValue
+ * @text Trigger 2 Threshold (Fixed)
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 50
+ *
+ * @param meter4TextColorTrigger2Color
+ * @text Trigger 2 Color
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type string
+ * @default #ffcc66
+ *
+ * @param meter4TextColorTrigger3Enabled
+ * @text Enable Trigger 3
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter4TextColorTrigger3VariableId
+ * @text Trigger 3 Variable
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter4TextColorTrigger3Type
+ * @text Trigger 3 Comparison
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter4TextColorTrigger3ThresholdVarId
+ * @text Trigger 3 Threshold (from Variable)
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter4TextColorTrigger3ThresholdValue
+ * @text Trigger 3 Threshold (Fixed)
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 75
+ *
+ * @param meter4TextColorTrigger3Color
+ * @text Trigger 3 Color
+ * @parent ---Meter 4 Text Color Triggers---
+ * @type string
+ * @default #ffff66
+ *
  * @param meter4TextOpacity
  * @text Text Opacity
  * @parent ---Meter 4 Settings---
@@ -803,7 +1365,6 @@
  * @text Font Face
  * @parent ---Meter 4 Settings---
  * @type string
- * @desc Leave blank for default game font.
  * @default
  *
  * @param meter4TextSize
@@ -811,7 +1372,16 @@
  * @parent ---Meter 4 Settings---
  * @type number
  * @min 0
- * @desc Set to 0 for default game font size.
+ * @default 0
+ *
+ * @param ---Meter 4 Interactivity---
+ * @parent ---Meter 4 Settings---
+ *
+ * @param meter4ClickCommonEventId
+ * @text On-Click Common Event
+ * @parent ---Meter 4 Interactivity---
+ * @desc The Common Event to run when this meter is clicked. Set to 0 for no effect.
+ * @type common_event
  * @default 0
  *
  * @param ---Meter 5 Settings---
@@ -976,6 +1546,138 @@
  * @type string
  * @default #ffffff
  *
+ * @param ---Meter 5 Text Color Triggers---
+ * @parent ---Meter 5 Settings---
+ *
+ * @param meter5TextColorTrigger1Enabled
+ * @text Enable Trigger 1
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter5TextColorTrigger1VariableId
+ * @text Trigger 1 Variable
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter5TextColorTrigger1Type
+ * @text Trigger 1 Comparison
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter5TextColorTrigger1ThresholdVarId
+ * @text Trigger 1 Threshold (from Variable)
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter5TextColorTrigger1ThresholdValue
+ * @text Trigger 1 Threshold (Fixed)
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 25
+ *
+ * @param meter5TextColorTrigger1Color
+ * @text Trigger 1 Color
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type string
+ * @default #ff6666
+ *
+ * @param meter5TextColorTrigger2Enabled
+ * @text Enable Trigger 2
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter5TextColorTrigger2VariableId
+ * @text Trigger 2 Variable
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter5TextColorTrigger2Type
+ * @text Trigger 2 Comparison
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter5TextColorTrigger2ThresholdVarId
+ * @text Trigger 2 Threshold (from Variable)
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter5TextColorTrigger2ThresholdValue
+ * @text Trigger 2 Threshold (Fixed)
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 50
+ *
+ * @param meter5TextColorTrigger2Color
+ * @text Trigger 2 Color
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type string
+ * @default #ffcc66
+ *
+ * @param meter5TextColorTrigger3Enabled
+ * @text Enable Trigger 3
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter5TextColorTrigger3VariableId
+ * @text Trigger 3 Variable
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter5TextColorTrigger3Type
+ * @text Trigger 3 Comparison
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter5TextColorTrigger3ThresholdVarId
+ * @text Trigger 3 Threshold (from Variable)
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter5TextColorTrigger3ThresholdValue
+ * @text Trigger 3 Threshold (Fixed)
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 75
+ *
+ * @param meter5TextColorTrigger3Color
+ * @text Trigger 3 Color
+ * @parent ---Meter 5 Text Color Triggers---
+ * @type string
+ * @default #ffff66
+ *
  * @param meter5TextOpacity
  * @text Text Opacity
  * @parent ---Meter 5 Settings---
@@ -995,6 +1697,16 @@
  * @parent ---Meter 5 Settings---
  * @type number
  * @min 0
+ * @default 0
+ *
+ * @param ---Meter 5 Interactivity---
+ * @parent ---Meter 5 Settings---
+ *
+ * @param meter5ClickCommonEventId
+ * @text On-Click Common Event
+ * @parent ---Meter 5 Interactivity---
+ * @desc The Common Event to run when this meter is clicked. Set to 0 for no effect.
+ * @type common_event
  * @default 0
  *
  * @param ---Meter 6 Settings---
@@ -1159,6 +1871,138 @@
  * @type string
  * @default #ffffff
  *
+ * @param ---Meter 6 Text Color Triggers---
+ * @parent ---Meter 6 Settings---
+ *
+ * @param meter6TextColorTrigger1Enabled
+ * @text Enable Trigger 1
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter6TextColorTrigger1VariableId
+ * @text Trigger 1 Variable
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter6TextColorTrigger1Type
+ * @text Trigger 1 Comparison
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter6TextColorTrigger1ThresholdVarId
+ * @text Trigger 1 Threshold (from Variable)
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter6TextColorTrigger1ThresholdValue
+ * @text Trigger 1 Threshold (Fixed)
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 25
+ *
+ * @param meter6TextColorTrigger1Color
+ * @text Trigger 1 Color
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type string
+ * @default #ff6666
+ *
+ * @param meter6TextColorTrigger2Enabled
+ * @text Enable Trigger 2
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter6TextColorTrigger2VariableId
+ * @text Trigger 2 Variable
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter6TextColorTrigger2Type
+ * @text Trigger 2 Comparison
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter6TextColorTrigger2ThresholdVarId
+ * @text Trigger 2 Threshold (from Variable)
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter6TextColorTrigger2ThresholdValue
+ * @text Trigger 2 Threshold (Fixed)
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 50
+ *
+ * @param meter6TextColorTrigger2Color
+ * @text Trigger 2 Color
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type string
+ * @default #ffcc66
+ *
+ * @param meter6TextColorTrigger3Enabled
+ * @text Enable Trigger 3
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter6TextColorTrigger3VariableId
+ * @text Trigger 3 Variable
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter6TextColorTrigger3Type
+ * @text Trigger 3 Comparison
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter6TextColorTrigger3ThresholdVarId
+ * @text Trigger 3 Threshold (from Variable)
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter6TextColorTrigger3ThresholdValue
+ * @text Trigger 3 Threshold (Fixed)
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 75
+ *
+ * @param meter6TextColorTrigger3Color
+ * @text Trigger 3 Color
+ * @parent ---Meter 6 Text Color Triggers---
+ * @type string
+ * @default #ffff66
+ *
  * @param meter6TextOpacity
  * @text Text Opacity
  * @parent ---Meter 6 Settings---
@@ -1178,6 +2022,16 @@
  * @parent ---Meter 6 Settings---
  * @type number
  * @min 0
+ * @default 0
+ *
+ * @param ---Meter 6 Interactivity---
+ * @parent ---Meter 6 Settings---
+ *
+ * @param meter6ClickCommonEventId
+ * @text On-Click Common Event
+ * @parent ---Meter 6 Interactivity---
+ * @desc The Common Event to run when this meter is clicked. Set to 0 for no effect.
+ * @type common_event
  * @default 0
  *
  * @param ---Style Settings---
@@ -1274,7 +2128,8 @@
 
     const parseMeterParams = (i) => {
         if (params[`meter${i}Enabled`] !== 'true') return null;
-        return {
+        
+        const meterConfig = {
             id: i,
             anchor: params[`meter${i}LayoutAnchor`],
             toggleSwitchId: Number(params[`meter${i}ToggleSwitchId`]),
@@ -1297,7 +2152,24 @@
             fontFace: params[`meter${i}FontFace`],
             textOpacity: Number(params[`meter${i}TextOpacity`]),
             textSize: Number(params[`meter${i}TextSize`]) || 0,
+            clickCommonEventId: Number(params[`meter${i}ClickCommonEventId`]) || 0,
         };
+
+        const triggers = [];
+        for (let j = 1; j <= 3; j++) {
+            if (params[`meter${i}TextColorTrigger${j}Enabled`] === 'true') {
+                triggers.push({
+                    variableId: Number(params[`meter${i}TextColorTrigger${j}VariableId`]) || 0,
+                    type: params[`meter${i}TextColorTrigger${j}Type`],
+                    thresholdVarId: Number(params[`meter${i}TextColorTrigger${j}ThresholdVarId`]) || 0,
+                    thresholdValue: Number(params[`meter${i}TextColorTrigger${j}ThresholdValue`]),
+                    color: params[`meter${i}TextColorTrigger${j}Color`]
+                });
+            }
+        }
+        meterConfig.textColorTriggers = triggers;
+        
+        return meterConfig;
     };
 
     const pMainToggleSwitchId = Number(params.toggleSwitchId);
@@ -1366,6 +2238,7 @@
         this.updateVisibility();
         if (this.visible) {
             this.updateStateAndRefresh();
+            this.updateClickHandling();
         }
     };
 
@@ -1373,6 +2246,15 @@
 
     Window_Hud.prototype.isMeterVisible = function(meter) {
         return meter.toggleSwitchId > 0 ? $gameSwitches.value(meter.toggleSwitchId) : true;
+    };
+
+    Window_Hud.prototype.updateClickHandling = function() {
+        if (TouchInput.isTriggered() && this._hoveredMeterId !== null) {
+            const clickedMeter = pMeters.find(m => m.id === this._hoveredMeterId);
+            if (clickedMeter && clickedMeter.clickCommonEventId > 0) {
+                $gameTemp.reserveCommonEvent(clickedMeter.clickCommonEventId);
+            }
+        }
     };
 
     Window_Hud.prototype.updateStateAndRefresh = function() {
@@ -1417,15 +2299,15 @@
     };
     
     Window_Hud.prototype._getHoveredMeterId = function() {
+        if (typeof TouchInput === "undefined" || !TouchInput.x) {
+            return null;
+        }
         const mouseX = TouchInput.x;
         const mouseY = TouchInput.y;
-        // The window's contents are offset by this.padding. We must account for this.
         const padding = this.padding;
         const visibleMeters = pMeters.filter(meter => this.isMeterVisible(meter));
     
-        // Iterate in reverse so topmost meters are checked first.
         for (const meter of visibleMeters.slice().reverse()) {
-            // Calculate the meter's hitbox in global screen coordinates.
             const meterScreenX = meter.x + this.x + padding;
             const meterScreenY = meter.y + this.y + padding;
             
@@ -1441,7 +2323,7 @@
 
     Window_Hud.prototype.refresh = function() {
         this.contents.clear();
-        this.processMeterAnchors(); // Recalculate positions on every refresh
+        this.processMeterAnchors();
         for (const meter of pMeters) {
             if (this.isMeterVisible(meter)) {
                 const current = this._lastValues[meter.id] || $gameVariables.value(meter.variableId);
@@ -1548,7 +2430,42 @@
             }
         }
     };
-
+    
+    Window_Hud.prototype.getTriggeredTextColor = function(params, currentValue) {
+        if (!params.textColorTriggers || params.textColorTriggers.length === 0) {
+            return params.textColor;
+        }
+    
+        let bestMatch = {
+            color: params.textColor,
+            lessThreshold: Infinity,
+            greaterThreshold: -Infinity
+        };
+    
+        for (const trigger of params.textColorTriggers) {
+            const checkValue = (trigger.variableId > 0) ? $gameVariables.value(trigger.variableId) : currentValue;
+            const threshold = (trigger.thresholdVarId > 0) ? $gameVariables.value(trigger.thresholdVarId) : trigger.thresholdValue;
+            
+            if (trigger.type === 'equal') {
+                if (checkValue === threshold) {
+                    return trigger.color;
+                }
+            } else if (trigger.type === 'less') {
+                if (checkValue < threshold && threshold < bestMatch.lessThreshold) {
+                    bestMatch.lessThreshold = threshold;
+                    bestMatch.color = trigger.color;
+                }
+            } else if (trigger.type === 'greater') {
+                 if (checkValue > threshold && threshold > bestMatch.greaterThreshold) {
+                    bestMatch.greaterThreshold = threshold;
+                    bestMatch.color = trigger.color;
+                }
+            }
+        }
+    
+        return bestMatch.color;
+    };
+    
     Window_Hud.prototype.drawHudText = function(params, currentValue, maxValue) {
         if (!params.showText) return;
 
@@ -1564,7 +2481,10 @@
         if (params.textSize > 0) {
             this.contents.fontSize = params.textSize;
         }
-        this.changeTextColor(params.textColor);
+        
+        const finalTextColor = this.getTriggeredTextColor(params, currentValue);
+        this.changeTextColor(finalTextColor);
+        
         this.contents.paintOpacity = params.textOpacity;
 
         let drawX, drawY, drawWidth, drawAlign;

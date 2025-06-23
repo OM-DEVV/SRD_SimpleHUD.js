@@ -7,7 +7,7 @@
  * @help SRD_SimpleHUD.js
  *
  * This plugin displays a highly customizable Heads-Up Display (HUD) on the
- * map screen, featuring up to six meters with an automatic layout system.
+ * map screen, featuring up to nine meters with an automatic layout system.
  *
  * --- NEW in v4.2.0 ---
  * - Clickable Meters: Meters can now trigger a configurable Common Event
@@ -2034,6 +2034,981 @@
  * @type common_event
  * @default 0
  *
+ * @param ---Meter 7 Settings---
+ * @param meter7Enabled
+ * @text Enable This Meter
+ * @parent ---Meter 7 Settings---
+ * @type boolean
+ * @default false
+ *
+ * @param meter7LayoutAnchor
+ * @text Layout Anchor
+ * @parent ---Meter 7 Settings---
+ * @type select
+ * @option Custom Position
+ * @value custom
+ * @option Top Left
+ * @value topLeft
+ * @option Top Right
+ * @value topRight
+ * @option Bottom Left
+ * @value bottomLeft
+ * @option Bottom Right
+ * @value bottomRight
+ * @default topLeft
+ *
+ * @param meter7X
+ * @text X Position (Custom Only)
+ * @parent ---Meter 7 Settings---
+ * @type number
+ * @default 24
+ *
+ * @param meter7Y
+ * @text Y Position (Custom Only)
+ * @parent ---Meter 7 Settings---
+ * @type number
+ * @default 230
+ *
+ * @param meter7ToggleSwitchId
+ * @text Toggle Switch
+ * @parent ---Meter 7 Settings---
+ * @type switch
+ * @default 0
+ *
+ * @param meter7VariableId
+ * @text Current Value Variable
+ * @parent ---Meter 7 Settings---
+ * @type variable
+ * @default 17
+ *
+ * @param meter7MaxVariableId
+ * @text Max Value Variable
+ * @parent ---Meter 7 Settings---
+ * @type variable
+ * @default 0
+ *
+ * @param meter7Width
+ * @text Width
+ * @parent ---Meter 7 Settings---
+ * @type number
+ * @default 150
+ *
+ * @param meter7Height
+ * @text Height
+ * @parent ---Meter 7 Settings---
+ * @type number
+ * @default 16
+ *
+ * @param meter7GradientOrientation
+ * @text Gradient Orientation
+ * @parent ---Meter 7 Settings---
+ * @type select
+ * @option Horizontal
+ * @value horizontal
+ * @option Vertical
+ * @value vertical
+ * @default horizontal
+ *
+ * @param meter7Color1
+ * @text Color 1 (Gradient Left/Top)
+ * @parent ---Meter 7 Settings---
+ * @type string
+ * @default #cccccc
+ *
+ * @param meter7Color2
+ * @text Color 2 (Gradient Right/Bottom)
+ * @parent ---Meter 7 Settings---
+ * @type string
+ * @default #888888
+ *
+ * @param meter7BorderColor
+ * @text Border Color
+ * @parent ---Meter 7 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter7ShowText
+ * @text Show Text
+ * @parent ---Meter 7 Settings---
+ * @type boolean
+ * @default false
+ *
+ * @param meter7TextSide
+ * @text Text Side
+ * @parent ---Meter 7 Settings---
+ * @type select
+ * @option Inside the bar
+ * @value inside
+ * @option Left of the bar
+ * @value left
+ * @option Right of the bar
+ * @value right
+ * @default inside
+ *
+ * @param meter7TextFormat
+ * @text Text Format
+ * @parent ---Meter 7 Settings---
+ * @type select
+ * @option Current Value Only
+ * @value current
+ * @option Current / Max
+ * @value current/max
+ * @default current/max
+ *
+ * @param meter7TextPrefix
+ * @text Text Prefix
+ * @parent ---Meter 7 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter7TextSuffix
+ * @text Text Suffix
+ * @parent ---Meter 7 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter7TextX
+ * @text Text X Offset
+ * @parent ---Meter 7 Settings---
+ * @type number
+ * @min -9999
+ * @default 0
+ *
+ * @param meter7TextY
+ * @text Text Y Offset
+ * @parent ---Meter 7 Settings---
+ * @type number
+ * @min -9999
+ * @default -4
+ *
+ * @param meter7TextAlign
+ * @text Text Align (Inside Only)
+ * @parent ---Meter 7 Settings---
+ * @type select
+ * @option left
+ * @option center
+ * @option right
+ * @default center
+ *
+ * @param meter7TextColor
+ * @text Text Color
+ * @parent ---Meter 7 Settings---
+ * @type string
+ * @default #ffffff
+ *
+ * @param ---Meter 7 Text Color Triggers---
+ * @parent ---Meter 7 Settings---
+ *
+ * @param meter7TextColorTrigger1Enabled
+ * @text Enable Trigger 1
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter7TextColorTrigger1VariableId
+ * @text Trigger 1 Variable
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter7TextColorTrigger1Type
+ * @text Trigger 1 Comparison
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter7TextColorTrigger1ThresholdVarId
+ * @text Trigger 1 Threshold (from Variable)
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter7TextColorTrigger1ThresholdValue
+ * @text Trigger 1 Threshold (Fixed)
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 25
+ *
+ * @param meter7TextColorTrigger1Color
+ * @text Trigger 1 Color
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type string
+ * @default #ff6666
+ *
+ * @param meter7TextColorTrigger2Enabled
+ * @text Enable Trigger 2
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter7TextColorTrigger2VariableId
+ * @text Trigger 2 Variable
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter7TextColorTrigger2Type
+ * @text Trigger 2 Comparison
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter7TextColorTrigger2ThresholdVarId
+ * @text Trigger 2 Threshold (from Variable)
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter7TextColorTrigger2ThresholdValue
+ * @text Trigger 2 Threshold (Fixed)
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 50
+ *
+ * @param meter7TextColorTrigger2Color
+ * @text Trigger 2 Color
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type string
+ * @default #ffcc66
+ *
+ * @param meter7TextColorTrigger3Enabled
+ * @text Enable Trigger 3
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter7TextColorTrigger3VariableId
+ * @text Trigger 3 Variable
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter7TextColorTrigger3Type
+ * @text Trigger 3 Comparison
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter7TextColorTrigger3ThresholdVarId
+ * @text Trigger 3 Threshold (from Variable)
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter7TextColorTrigger3ThresholdValue
+ * @text Trigger 3 Threshold (Fixed)
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 75
+ *
+ * @param meter7TextColorTrigger3Color
+ * @text Trigger 3 Color
+ * @parent ---Meter 7 Text Color Triggers---
+ * @type string
+ * @default #ffff66
+ *
+ * @param meter7TextOpacity
+ * @text Text Opacity
+ * @parent ---Meter 7 Settings---
+ * @type number
+ * @min 0
+ * @max 255
+ * @default 255
+ *
+ * @param meter7FontFace
+ * @text Font Face
+ * @parent ---Meter 7 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter7TextSize
+ * @text Text Size
+ * @parent ---Meter 7 Settings---
+ * @type number
+ * @min 0
+ * @default 0
+ *
+ * @param ---Meter 7 Interactivity---
+ * @parent ---Meter 7 Settings---
+ *
+ * @param meter7ClickCommonEventId
+ * @text On-Click Common Event
+ * @parent ---Meter 7 Interactivity---
+ * @desc The Common Event to run when this meter is clicked. Set to 0 for no effect.
+ * @type common_event
+ * @default 0
+ *
+ * @param ---Meter 8 Settings---
+ * @param meter8Enabled
+ * @text Enable This Meter
+ * @parent ---Meter 8 Settings---
+ * @type boolean
+ * @default false
+ *
+ * @param meter8LayoutAnchor
+ * @text Layout Anchor
+ * @parent ---Meter 8 Settings---
+ * @type select
+ * @option Custom Position
+ * @value custom
+ * @option Top Left
+ * @value topLeft
+ * @option Top Right
+ * @value topRight
+ * @option Bottom Left
+ * @value bottomLeft
+ * @option Bottom Right
+ * @value bottomRight
+ * @default topLeft
+ *
+ * @param meter8X
+ * @text X Position (Custom Only)
+ * @parent ---Meter 8 Settings---
+ * @type number
+ * @default 24
+ *
+ * @param meter8Y
+ * @text Y Position (Custom Only)
+ * @parent ---Meter 8 Settings---
+ * @type number
+ * @default 254
+ *
+ * @param meter8ToggleSwitchId
+ * @text Toggle Switch
+ * @parent ---Meter 8 Settings---
+ * @type switch
+ * @default 0
+ *
+ * @param meter8VariableId
+ * @text Current Value Variable
+ * @parent ---Meter 8 Settings---
+ * @type variable
+ * @default 18
+ *
+ * @param meter8MaxVariableId
+ * @text Max Value Variable
+ * @parent ---Meter 8 Settings---
+ * @type variable
+ * @default 0
+ *
+ * @param meter8Width
+ * @text Width
+ * @parent ---Meter 8 Settings---
+ * @type number
+ * @default 150
+ *
+ * @param meter8Height
+ * @text Height
+ * @parent ---Meter 8 Settings---
+ * @type number
+ * @default 16
+ *
+ * @param meter8GradientOrientation
+ * @text Gradient Orientation
+ * @parent ---Meter 8 Settings---
+ * @type select
+ * @option Horizontal
+ * @value horizontal
+ * @option Vertical
+ * @value vertical
+ * @default horizontal
+ *
+ * @param meter8Color1
+ * @text Color 1 (Gradient Left/Top)
+ * @parent ---Meter 8 Settings---
+ * @type string
+ * @default #cccccc
+ *
+ * @param meter8Color2
+ * @text Color 2 (Gradient Right/Bottom)
+ * @parent ---Meter 8 Settings---
+ * @type string
+ * @default #888888
+ *
+ * @param meter8BorderColor
+ * @text Border Color
+ * @parent ---Meter 8 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter8ShowText
+ * @text Show Text
+ * @parent ---Meter 8 Settings---
+ * @type boolean
+ * @default false
+ *
+ * @param meter8TextSide
+ * @text Text Side
+ * @parent ---Meter 8 Settings---
+ * @type select
+ * @option Inside the bar
+ * @value inside
+ * @option Left of the bar
+ * @value left
+ * @option Right of the bar
+ * @value right
+ * @default inside
+ *
+ * @param meter8TextFormat
+ * @text Text Format
+ * @parent ---Meter 8 Settings---
+ * @type select
+ * @option Current Value Only
+ * @value current
+ * @option Current / Max
+ * @value current/max
+ * @default current/max
+ *
+ * @param meter8TextPrefix
+ * @text Text Prefix
+ * @parent ---Meter 8 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter8TextSuffix
+ * @text Text Suffix
+ * @parent ---Meter 8 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter8TextX
+ * @text Text X Offset
+ * @parent ---Meter 8 Settings---
+ * @type number
+ * @min -9999
+ * @default 0
+ *
+ * @param meter8TextY
+ * @text Text Y Offset
+ * @parent ---Meter 8 Settings---
+ * @type number
+ * @min -9999
+ * @default -4
+ *
+ * @param meter8TextAlign
+ * @text Text Align (Inside Only)
+ * @parent ---Meter 8 Settings---
+ * @type select
+ * @option left
+ * @option center
+ * @option right
+ * @default center
+ *
+ * @param meter8TextColor
+ * @text Text Color
+ * @parent ---Meter 8 Settings---
+ * @type string
+ * @default #ffffff
+ *
+ * @param ---Meter 8 Text Color Triggers---
+ * @parent ---Meter 8 Settings---
+ *
+ * @param meter8TextColorTrigger1Enabled
+ * @text Enable Trigger 1
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter8TextColorTrigger1VariableId
+ * @text Trigger 1 Variable
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter8TextColorTrigger1Type
+ * @text Trigger 1 Comparison
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter8TextColorTrigger1ThresholdVarId
+ * @text Trigger 1 Threshold (from Variable)
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter8TextColorTrigger1ThresholdValue
+ * @text Trigger 1 Threshold (Fixed)
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 25
+ *
+ * @param meter8TextColorTrigger1Color
+ * @text Trigger 1 Color
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type string
+ * @default #ff6666
+ *
+ * @param meter8TextColorTrigger2Enabled
+ * @text Enable Trigger 2
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter8TextColorTrigger2VariableId
+ * @text Trigger 2 Variable
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter8TextColorTrigger2Type
+ * @text Trigger 2 Comparison
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter8TextColorTrigger2ThresholdVarId
+ * @text Trigger 2 Threshold (from Variable)
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter8TextColorTrigger2ThresholdValue
+ * @text Trigger 2 Threshold (Fixed)
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 50
+ *
+ * @param meter8TextColorTrigger2Color
+ * @text Trigger 2 Color
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type string
+ * @default #ffcc66
+ *
+ * @param meter8TextColorTrigger3Enabled
+ * @text Enable Trigger 3
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter8TextColorTrigger3VariableId
+ * @text Trigger 3 Variable
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter8TextColorTrigger3Type
+ * @text Trigger 3 Comparison
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter8TextColorTrigger3ThresholdVarId
+ * @text Trigger 3 Threshold (from Variable)
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter8TextColorTrigger3ThresholdValue
+ * @text Trigger 3 Threshold (Fixed)
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 75
+ *
+ * @param meter8TextColorTrigger3Color
+ * @text Trigger 3 Color
+ * @parent ---Meter 8 Text Color Triggers---
+ * @type string
+ * @default #ffff66
+ *
+ * @param meter8TextOpacity
+ * @text Text Opacity
+ * @parent ---Meter 8 Settings---
+ * @type number
+ * @min 0
+ * @max 255
+ * @default 255
+ *
+ * @param meter8FontFace
+ * @text Font Face
+ * @parent ---Meter 8 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter8TextSize
+ * @text Text Size
+ * @parent ---Meter 8 Settings---
+ * @type number
+ * @min 0
+ * @default 0
+ *
+ * @param ---Meter 8 Interactivity---
+ * @parent ---Meter 8 Settings---
+ *
+ * @param meter8ClickCommonEventId
+ * @text On-Click Common Event
+ * @parent ---Meter 8 Interactivity---
+ * @desc The Common Event to run when this meter is clicked. Set to 0 for no effect.
+ * @type common_event
+ * @default 0
+ *
+ * @param ---Meter 9 Settings---
+ * @param meter9Enabled
+ * @text Enable This Meter
+ * @parent ---Meter 9 Settings---
+ * @type boolean
+ * @default false
+ *
+ * @param meter9LayoutAnchor
+ * @text Layout Anchor
+ * @parent ---Meter 9 Settings---
+ * @type select
+ * @option Custom Position
+ * @value custom
+ * @option Top Left
+ * @value topLeft
+ * @option Top Right
+ * @value topRight
+ * @option Bottom Left
+ * @value bottomLeft
+ * @option Bottom Right
+ * @value bottomRight
+ * @default topLeft
+ *
+ * @param meter9X
+ * @text X Position (Custom Only)
+ * @parent ---Meter 9 Settings---
+ * @type number
+ * @default 24
+ *
+ * @param meter9Y
+ * @text Y Position (Custom Only)
+ * @parent ---Meter 9 Settings---
+ * @type number
+ * @default 278
+ *
+ * @param meter9ToggleSwitchId
+ * @text Toggle Switch
+ * @parent ---Meter 9 Settings---
+ * @type switch
+ * @default 0
+ *
+ * @param meter9VariableId
+ * @text Current Value Variable
+ * @parent ---Meter 9 Settings---
+ * @type variable
+ * @default 19
+ *
+ * @param meter9MaxVariableId
+ * @text Max Value Variable
+ * @parent ---Meter 9 Settings---
+ * @type variable
+ * @default 0
+ *
+ * @param meter9Width
+ * @text Width
+ * @parent ---Meter 9 Settings---
+ * @type number
+ * @default 150
+ *
+ * @param meter9Height
+ * @text Height
+ * @parent ---Meter 9 Settings---
+ * @type number
+ * @default 16
+ *
+ * @param meter9GradientOrientation
+ * @text Gradient Orientation
+ * @parent ---Meter 9 Settings---
+ * @type select
+ * @option Horizontal
+ * @value horizontal
+ * @option Vertical
+ * @value vertical
+ * @default horizontal
+ *
+ * @param meter9Color1
+ * @text Color 1 (Gradient Left/Top)
+ * @parent ---Meter 9 Settings---
+ * @type string
+ * @default #cccccc
+ *
+ * @param meter9Color2
+ * @text Color 2 (Gradient Right/Bottom)
+ * @parent ---Meter 9 Settings---
+ * @type string
+ * @default #888888
+ *
+ * @param meter9BorderColor
+ * @text Border Color
+ * @parent ---Meter 9 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter9ShowText
+ * @text Show Text
+ * @parent ---Meter 9 Settings---
+ * @type boolean
+ * @default false
+ *
+ * @param meter9TextSide
+ * @text Text Side
+ * @parent ---Meter 9 Settings---
+ * @type select
+ * @option Inside the bar
+ * @value inside
+ * @option Left of the bar
+ * @value left
+ * @option Right of the bar
+ * @value right
+ * @default inside
+ *
+ * @param meter9TextFormat
+ * @text Text Format
+ * @parent ---Meter 9 Settings---
+ * @type select
+ * @option Current Value Only
+ * @value current
+ * @option Current / Max
+ * @value current/max
+ * @default current/max
+ *
+ * @param meter9TextPrefix
+ * @text Text Prefix
+ * @parent ---Meter 9 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter9TextSuffix
+ * @text Text Suffix
+ * @parent ---Meter 9 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter9TextX
+ * @text Text X Offset
+ * @parent ---Meter 9 Settings---
+ * @type number
+ * @min -9999
+ * @default 0
+ *
+ * @param meter9TextY
+ * @text Text Y Offset
+ * @parent ---Meter 9 Settings---
+ * @type number
+ * @min -9999
+ * @default -4
+ *
+ * @param meter9TextAlign
+ * @text Text Align (Inside Only)
+ * @parent ---Meter 9 Settings---
+ * @type select
+ * @option left
+ * @option center
+ * @option right
+ * @default center
+ *
+ * @param meter9TextColor
+ * @text Text Color
+ * @parent ---Meter 9 Settings---
+ * @type string
+ * @default #ffffff
+ *
+ * @param ---Meter 9 Text Color Triggers---
+ * @parent ---Meter 9 Settings---
+ *
+ * @param meter9TextColorTrigger1Enabled
+ * @text Enable Trigger 1
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter9TextColorTrigger1VariableId
+ * @text Trigger 1 Variable
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter9TextColorTrigger1Type
+ * @text Trigger 1 Comparison
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter9TextColorTrigger1ThresholdVarId
+ * @text Trigger 1 Threshold (from Variable)
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter9TextColorTrigger1ThresholdValue
+ * @text Trigger 1 Threshold (Fixed)
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 25
+ *
+ * @param meter9TextColorTrigger1Color
+ * @text Trigger 1 Color
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type string
+ * @default #ff6666
+ *
+ * @param meter9TextColorTrigger2Enabled
+ * @text Enable Trigger 2
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter9TextColorTrigger2VariableId
+ * @text Trigger 2 Variable
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter9TextColorTrigger2Type
+ * @text Trigger 2 Comparison
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter9TextColorTrigger2ThresholdVarId
+ * @text Trigger 2 Threshold (from Variable)
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter9TextColorTrigger2ThresholdValue
+ * @text Trigger 2 Threshold (Fixed)
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 50
+ *
+ * @param meter9TextColorTrigger2Color
+ * @text Trigger 2 Color
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type string
+ * @default #ffcc66
+ *
+ * @param meter9TextColorTrigger3Enabled
+ * @text Enable Trigger 3
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type boolean
+ * @default false
+ *
+ * @param meter9TextColorTrigger3VariableId
+ * @text Trigger 3 Variable
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter9TextColorTrigger3Type
+ * @text Trigger 3 Comparison
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type select
+ * @option Value is LESS THAN threshold
+ * @value less
+ * @option Value is GREATER THAN threshold
+ * @value greater
+ * @option Value is EQUAL TO threshold
+ * @value equal
+ * @default less
+ *
+ * @param meter9TextColorTrigger3ThresholdVarId
+ * @text Trigger 3 Threshold (from Variable)
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type variable
+ * @default 0
+ *
+ * @param meter9TextColorTrigger3ThresholdValue
+ * @text Trigger 3 Threshold (Fixed)
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type number
+ * @min -99999999
+ * @default 75
+ *
+ * @param meter9TextColorTrigger3Color
+ * @text Trigger 3 Color
+ * @parent ---Meter 9 Text Color Triggers---
+ * @type string
+ * @default #ffff66
+ *
+ * @param meter9TextOpacity
+ * @text Text Opacity
+ * @parent ---Meter 9 Settings---
+ * @type number
+ * @min 0
+ * @max 255
+ * @default 255
+ *
+ * @param meter9FontFace
+ * @text Font Face
+ * @parent ---Meter 9 Settings---
+ * @type string
+ * @default
+ *
+ * @param meter9TextSize
+ * @text Text Size
+ * @parent ---Meter 9 Settings---
+ * @type number
+ * @min 0
+ * @default 0
+ *
+ * @param ---Meter 9 Interactivity---
+ * @parent ---Meter 9 Settings---
+ *
+ * @param meter9ClickCommonEventId
+ * @text On-Click Common Event
+ * @parent ---Meter 9 Interactivity---
+ * @desc The Common Event to run when this meter is clicked. Set to 0 for no effect.
+ * @type common_event
+ * @default 0
+ *
  * @param ---Style Settings---
  *
  * @param borderColor
@@ -2187,7 +3162,7 @@
     const pGlowColor = params.glowColor;
     const pGlowThickness = Number(params.glowThickness);
 
-    const pMeters = Array.from({ length: 6 }, (_, i) => parseMeterParams(i + 1)).filter(p => p);
+    const pMeters = Array.from({ length: 9 }, (_, i) => parseMeterParams(i + 1)).filter(p => p);
 
     const hexToRgba = (hex, alpha) => {
         if (!hex.startsWith("#")) return hex; // Already a named color or rgba
